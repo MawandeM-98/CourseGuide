@@ -1,8 +1,7 @@
 // ============================================================
 // COURSEGUIDE - QUIZ ENGINE
+// Plain Script - NO export
 // ============================================================
-
-import { SUBJECTS, getRandomQuestions, QUESTIONS_PER_QUIZ } from './data.js';
 
 // State
 let currentSubject = null;
@@ -24,9 +23,9 @@ const quizScore = document.getElementById('quizScore');
 const backToSubjectsBtn = document.getElementById('backToSubjects');
 
 // Render subject cards
-export function renderCards() {
+function renderCards() {
     cardsGrid.innerHTML = '';
-    SUBJECTS.forEach(subject => {
+    SUBJECTS.forEach(function(subject) {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.subject = subject.id;
@@ -35,21 +34,25 @@ export function renderCards() {
             <h3 class="card-title">${subject.name}</h3>
             <span class="card-subject">Click to start quiz</span>
         `;
-        card.addEventListener('click', () => startQuiz(subject.id));
+        card.addEventListener('click', function() {
+            startQuiz(subject.id);
+        });
         cardsGrid.appendChild(card);
     });
 }
 
 // Start a quiz for a subject
 function startQuiz(subjectId) {
-    const subject = SUBJECTS.find(s => s.id === subjectId);
+    const subject = SUBJECTS.find(function(s) {
+        return s.id === subjectId;
+    });
     if (!subject) return;
 
     currentSubject = subject;
     currentQuestions = getRandomQuestions(subjectId);
-    
+
     if (currentQuestions.length === 0) {
-        alert('No questions available for this subject yet. Please add questions in data.js.');
+        alert('No questions available for this subject yet.');
         return;
     }
 
@@ -79,17 +82,17 @@ function renderQuestion() {
 
     // Update progress
     const progress = (currentQuestionIndex / totalQuestions) * 100;
-    progressFill.style.width = `${progress}%`;
-    progressText.textContent = `Question ${questionNumber} of ${totalQuestions}`;
-    quizScore.textContent = `Score: ${score} / ${totalQuestions}`;
+    progressFill.style.width = progress + '%';
+    progressText.textContent = 'Question ' + questionNumber + ' of ' + totalQuestions;
+    quizScore.textContent = 'Score: ' + score + ' / ' + totalQuestions;
 
     const letters = ['A', 'B', 'C', 'D'];
     let html = `
         <div class="question-text">${q.question}</div>
         <div class="options-grid" id="optionsGrid">
     `;
-    
-    q.options.forEach((option, index) => {
+
+    q.options.forEach(function(option, index) {
         html += `
             <button class="option-btn" data-index="${index}">
                 <span class="option-letter">${letters[index]}.</span> ${option}
@@ -107,13 +110,15 @@ function renderQuestion() {
 
     // Add event listeners to options
     const optionButtons = questionContainer.querySelectorAll('.option-btn');
-    optionButtons.forEach(btn => {
-        btn.addEventListener('click', () => handleAnswer(parseInt(btn.dataset.index)));
+    optionButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            handleAnswer(parseInt(btn.dataset.index));
+        });
     });
 
     // Next button
     const nextBtn = document.getElementById('nextQuestionBtn');
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', function() {
         currentQuestionIndex++;
         renderQuestion();
     });
@@ -126,12 +131,12 @@ function handleAnswer(selectedIndex) {
 
     const q = currentQuestions[currentQuestionIndex];
     const isCorrect = selectedIndex === q.correct;
-    
+
     if (isCorrect) score++;
 
     // Disable all options
     const optionBtns = questionContainer.querySelectorAll('.option-btn');
-    optionBtns.forEach((btn, i) => {
+    optionBtns.forEach(function(btn, i) {
         btn.disabled = true;
         const index = parseInt(btn.dataset.index);
         if (index === q.correct) {
@@ -146,7 +151,7 @@ function handleAnswer(selectedIndex) {
 
     // Show explanation
     const explanationBox = document.getElementById('explanationBox');
-    const resultText = isCorrect ? '✅ Correct!' : '❌ Incorrect.';
+    var resultText = isCorrect ? '✅ Correct!' : '❌ Incorrect.';
     explanationBox.innerHTML = `
         <strong>${resultText}</strong>
         <p style="margin-top: 8px;">${q.explanation}</p>
@@ -157,14 +162,14 @@ function handleAnswer(selectedIndex) {
     document.getElementById('nextQuestionBtn').style.display = 'block';
 
     // Update score display
-    quizScore.textContent = `Score: ${score} / ${totalQuestions}`;
+    quizScore.textContent = 'Score: ' + score + ' / ' + totalQuestions;
 }
 
 // Show results at the end of quiz
 function showResults() {
-    const percentage = Math.round((score / totalQuestions) * 100);
-    let emoji = '😊';
-    let message = 'Good effort! Keep learning!';
+    var percentage = Math.round((score / totalQuestions) * 100);
+    var emoji = '😊';
+    var message = 'Good effort! Keep learning!';
     if (percentage >= 80) { emoji = '🌟'; message = 'Excellent! You\'re a star!'; }
     else if (percentage >= 60) { emoji = '👏'; message = 'Great work! Keep going!'; }
     else if (percentage >= 40) { emoji = '📚'; message = 'Keep practicing, you\'re getting there!'; }
@@ -174,8 +179,7 @@ function showResults() {
     progressFill.style.width = '100%';
     progressText.textContent = 'Quiz Complete! 🎉';
 
-    const letters = ['A', 'B', 'C', 'D'];
-    let html = `
+    var html = `
         <div style="text-align: center; padding: 20px 0;">
             <div style="font-size: 64px; margin-bottom: 16px;">${emoji}</div>
             <h2 style="font-size: 24px; margin-bottom: 8px;">Quiz Complete!</h2>
@@ -190,9 +194,7 @@ function showResults() {
     // Show review of questions
     html += `<div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">`;
     html += `<h3 style="margin-bottom: 16px;">Review Your Answers</h3>`;
-    currentQuestions.forEach((q, i) => {
-        const userCorrect = q.correct === q.userAnswer; // We need to track user answers
-        // For simplicity, we'll show the correct answer
+    currentQuestions.forEach(function(q, i) {
         html += `
             <div style="padding: 12px 16px; margin-bottom: 10px; border-radius: 10px; background: rgba(255,255,255,0.04);">
                 <p style="font-weight: 500; margin-bottom: 4px;">Q${i+1}: ${q.question}</p>
@@ -204,8 +206,10 @@ function showResults() {
 
     questionContainer.innerHTML = html;
 
-    document.getElementById('retryQuizBtn')?.addEventListener('click', () => startQuiz(currentSubject.id));
-    document.getElementById('backToSubjectsFromQuiz')?.addEventListener('click', goBackToSubjects);
+    document.getElementById('retryQuizBtn').addEventListener('click', function() {
+        startQuiz(currentSubject.id);
+    });
+    document.getElementById('backToSubjectsFromQuiz').addEventListener('click', goBackToSubjects);
 }
 
 // Go back to subjects view
@@ -214,7 +218,7 @@ function goBackToSubjects() {
     subjectsView.classList.add('active');
 }
 
-// Initialize quiz events
-export function initQuiz() {
+// Initialize quiz
+function initQuiz() {
     backToSubjectsBtn.addEventListener('click', goBackToSubjects);
 }

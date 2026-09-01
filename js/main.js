@@ -1,33 +1,36 @@
 // ============================================================
 // COURSEGUIDE - MAIN APP
+// Plain Script - NO export
 // ============================================================
-
-import { renderCards, initQuiz } from './quiz.js';
-import { initAuth, checkSession } from './auth.js';
 
 // DOM elements
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 
 // ----- THEME TOGGLE -----
-let currentTheme = 'glass'; // 'glass' or 'blue'
+var currentTheme = 'glass'; // 'glass' or 'blue'
 
 function setTheme(theme) {
     currentTheme = theme;
     body.classList.remove('theme-glass', 'theme-blue');
-    body.classList.add(theme === 'glass' ? 'theme-glass' : 'theme-blue');
-    themeToggle.innerHTML = theme === 'glass' ? '🌙' : '☀️';
+    if (theme === 'glass') {
+        body.classList.add('theme-glass');
+        themeToggle.innerHTML = '🌙';
+    } else {
+        body.classList.add('theme-blue');
+        themeToggle.innerHTML = '☀️';
+    }
     localStorage.setItem('courseguide_theme', theme);
 }
 
 function toggleTheme() {
-    const newTheme = currentTheme === 'glass' ? 'blue' : 'glass';
+    var newTheme = currentTheme === 'glass' ? 'blue' : 'glass';
     setTheme(newTheme);
 }
 
 // Load saved theme
 function loadTheme() {
-    const saved = localStorage.getItem('courseguide_theme');
+    var saved = localStorage.getItem('courseguide_theme');
     if (saved === 'blue') {
         setTheme('blue');
     } else {
