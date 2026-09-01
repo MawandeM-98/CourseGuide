@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CourseGuide</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+
+    <!-- ============================================================
+    LOGIN SCREEN (ALWAYS GLASSMORPHISM - DARK)
+    ============================================================ -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <div class="login-box glass">
+                <div class="login-header">
+                    <span class="login-icon">📚</span>
+                    <h1 class="login-title">CourseGuide</h1>
+                    <p class="login-subtitle">Your learning companion</p>
+                </div>
+                <form id="loginForm" autocomplete="off">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" value="learner" />
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" value="learner123" />
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe" checked />
+                            <span>Remember me</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+                    <p id="loginError" class="login-error hidden">Invalid credentials. Please try again.</p>
+                </form>
+                <div class="login-footer">
+                    <span>CourseGuide v1.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MAIN APP SCREEN
+    ============================================================ -->
+    <div id="appScreen" class="screen">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1 class="app-title">CourseGuide</h1>
+            </div>
+            <div class="header-right">
+                <button id="themeToggle" class="theme-btn" title="Toggle Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <span class="header-book">📚</span>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="mainContent">
+            <!-- Subject Cards -->
+            <section id="subjectsView" class="view active">
+                <h2 class="section-title">Choose Your Subject</h2>
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Cards injected by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Quiz View -->
+            <section id="quizView" class="view">
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <button id="backToSubjects" class="back-btn">← Back</button>
+                        <h2 id="quizSubjectTitle" class="quiz-title">Subject</h2>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">Question 1 of 10</span>
+                    </div>
+                    <div class="quiz-score" id="quizScore">Score: 0 / 0</div>
+                    <div class="question-container" id="questionContainer">
+                        <!-- Question injected by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span class="footer-mm">MM</span>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
