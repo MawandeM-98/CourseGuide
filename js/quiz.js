@@ -20,6 +20,12 @@ const quizScore = document.getElementById('quizScore');
 const backToSubjectsBtn = document.getElementById('backToSubjects');
 const searchInput = document.getElementById('searchInput');
 
+// Get the number of questions from the dropdown
+function getQuestionCount() {
+    const select = document.getElementById('questionCount');
+    return parseInt(select.value) || 100;
+}
+
 // Render subject cards
 function renderCards(filter) {
     cardsGrid.innerHTML = '';
@@ -45,7 +51,6 @@ function renderCards(filter) {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.subject = subject.id;
-        // Staggered heartbeat delay
         var delay = (index % 3) * 0.5;
         card.style.animationDelay = delay + 's';
         card.innerHTML = `
@@ -77,7 +82,8 @@ function startQuiz(subjectId) {
     if (!subject) return;
 
     currentSubject = subject;
-    currentQuestions = getRandomQuestions(subjectId);
+    var count = getQuestionCount();
+    currentQuestions = getRandomQuestions(subjectId, count);
 
     if (currentQuestions.length === 0) {
         alert('No questions available for this subject yet.');

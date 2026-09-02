@@ -19,7 +19,7 @@
 <body>
 
     <!-- ============================================================
-    LOGIN SCREEN (ALWAYS DARK GLASSMORPHISM)
+    LOGIN SCREEN
     ============================================================ -->
     <div id="loginScreen" class="screen active">
         <div class="login-container">
@@ -77,10 +77,24 @@
             <!-- Subject Cards -->
             <section id="subjectsView" class="view active">
                 <h2 class="section-title">Choose Your Subject</h2>
-                <!-- Search Bar -->
-<div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search for a subject..." />
-</div>
+                <p class="section-subtitle">Select a subject to start your quiz</p>
+
+                <!-- 🔍 SEARCH BAR -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search for a subject..." />
+                </div>
+
+                <!-- 📊 QUESTION COUNT SELECTOR -->
+                <div class="count-selector">
+                    <label for="questionCount">📝 Questions per quiz:</label>
+                    <select id="questionCount">
+                        <option value="50">50</option>
+                        <option value="100" selected>100</option>
+                        <option value="150">150</option>
+                        <option value="200">200</option>
+                    </select>
+                </div>
+
                 <div class="cards-grid" id="cardsGrid">
                     <!-- Cards injected by JavaScript -->
                 </div>
@@ -113,7 +127,7 @@
         </footer>
     </div>
 
-    <!-- JavaScript - Plain scripts (NO ES Modules) -->
+    <!-- JavaScript - Plain scripts -->
     <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/quiz.js"></script>
