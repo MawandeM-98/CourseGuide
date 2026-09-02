@@ -1,9 +1,7 @@
 // ============================================================
 // COURSEGUIDE - QUIZ ENGINE
-// Plain Script - NO export
 // ============================================================
 
-// State
 let currentSubject = null;
 let currentQuestions = [];
 let currentQuestionIndex = 0;
@@ -11,7 +9,6 @@ let score = 0;
 let totalQuestions = 0;
 let isAnswered = false;
 
-// DOM elements
 const cardsGrid = document.getElementById('cardsGrid');
 const subjectsView = document.getElementById('subjectsView');
 const quizView = document.getElementById('quizView');
@@ -21,14 +18,36 @@ const progressFill = document.getElementById('progressFill');
 const progressText = document.getElementById('progressText');
 const quizScore = document.getElementById('quizScore');
 const backToSubjectsBtn = document.getElementById('backToSubjects');
+const searchInput = document.getElementById('searchInput');
 
 // Render subject cards
-function renderCards() {
+function renderCards(filter) {
     cardsGrid.innerHTML = '';
-    SUBJECTS.forEach(function(subject) {
+    var filteredSubjects = SUBJECTS;
+
+    if (filter) {
+        var searchTerm = filter.toLowerCase().trim();
+        filteredSubjects = SUBJECTS.filter(function(subject) {
+            return subject.name.toLowerCase().includes(searchTerm);
+        });
+    }
+
+    if (filteredSubjects.length === 0) {
+        cardsGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; opacity: 0.6;">
+                No subjects found matching "${filter}"
+            </div>
+        `;
+        return;
+    }
+
+    filteredSubjects.forEach(function(subject, index) {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.subject = subject.id;
+        // Staggered heartbeat delay
+        var delay = (index % 3) * 0.5;
+        card.style.animationDelay = delay + 's';
         card.innerHTML = `
             <span class="card-icon">${subject.icon}</span>
             <h3 class="card-title">${subject.name}</h3>
@@ -41,9 +60,18 @@ function renderCards() {
     });
 }
 
+// Search filter
+function initSearch() {
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            renderCards(this.value);
+        });
+    }
+}
+
 // Start a quiz for a subject
 function startQuiz(subjectId) {
-    const subject = SUBJECTS.find(function(s) {
+    var subject = SUBJECTS.find(function(s) {
         return s.id === subjectId;
     });
     if (!subject) return;
@@ -61,7 +89,6 @@ function startQuiz(subjectId) {
     score = 0;
     isAnswered = false;
 
-    // Switch view
     subjectsView.classList.remove('active');
     quizView.classList.add('active');
     quizSubjectTitle.textContent = subject.name;
@@ -76,18 +103,17 @@ function renderQuestion() {
         return;
     }
 
-    const q = currentQuestions[currentQuestionIndex];
-    const questionNumber = currentQuestionIndex + 1;
+    var q = currentQuestions[currentQuestionIndex];
+    var questionNumber = currentQuestionIndex + 1;
     isAnswered = false;
 
-    // Update progress
-    const progress = (currentQuestionIndex / totalQuestions) * 100;
+    var progress = (currentQuestionIndex / totalQuestions) * 100;
     progressFill.style.width = progress + '%';
     progressText.textContent = 'Question ' + questionNumber + ' of ' + totalQuestions;
     quizScore.textContent = 'Score: ' + score + ' / ' + totalQuestions;
 
-    const letters = ['A', 'B', 'C', 'D'];
-    let html = `
+    var letters = ['A', 'B', 'C', 'D'];
+    var html = `
         <div class="question-text">${q.question}</div>
         <div class="options-grid" id="optionsGrid">
     `;
@@ -108,16 +134,14 @@ function renderQuestion() {
 
     questionContainer.innerHTML = html;
 
-    // Add event listeners to options
-    const optionButtons = questionContainer.querySelectorAll('.option-btn');
+    var optionButtons = questionContainer.querySelectorAll('.option-btn');
     optionButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
             handleAnswer(parseInt(btn.dataset.index));
         });
     });
 
-    // Next button
-    const nextBtn = document.getElementById('nextQuestionBtn');
+    var nextBtn = document.getElementById('nextQuestionBtn');
     nextBtn.addEventListener('click', function() {
         currentQuestionIndex++;
         renderQuestion();
@@ -129,16 +153,15 @@ function handleAnswer(selectedIndex) {
     if (isAnswered) return;
     isAnswered = true;
 
-    const q = currentQuestions[currentQuestionIndex];
-    const isCorrect = selectedIndex === q.correct;
+    var q = currentQuestions[currentQuestionIndex];
+    var isCorrect = selectedIndex === q.correct;
 
     if (isCorrect) score++;
 
-    // Disable all options
-    const optionBtns = questionContainer.querySelectorAll('.option-btn');
+    var optionBtns = questionContainer.querySelectorAll('.option-btn');
     optionBtns.forEach(function(btn, i) {
         btn.disabled = true;
-        const index = parseInt(btn.dataset.index);
+        var index = parseInt(btn.dataset.index);
         if (index === q.correct) {
             btn.classList.add('correct');
         } else if (index === selectedIndex && !isCorrect) {
@@ -149,8 +172,7 @@ function handleAnswer(selectedIndex) {
         }
     });
 
-    // Show explanation
-    const explanationBox = document.getElementById('explanationBox');
+    var explanationBox = document.getElementById('explanationBox');
     var resultText = isCorrect ? '✅ Correct!' : '❌ Incorrect.';
     explanationBox.innerHTML = `
         <strong>${resultText}</strong>
@@ -158,14 +180,11 @@ function handleAnswer(selectedIndex) {
     `;
     explanationBox.classList.add('visible');
 
-    // Show next button
     document.getElementById('nextQuestionBtn').style.display = 'block';
-
-    // Update score display
     quizScore.textContent = 'Score: ' + score + ' / ' + totalQuestions;
 }
 
-// Show results at the end of quiz
+// Show results
 function showResults() {
     var percentage = Math.round((score / totalQuestions) * 100);
     var emoji = '😊';
@@ -175,7 +194,6 @@ function showResults() {
     else if (percentage >= 40) { emoji = '📚'; message = 'Keep practicing, you\'re getting there!'; }
     else { emoji = '💪'; message = 'Don\'t give up! Review and try again!'; }
 
-    // Update progress to full
     progressFill.style.width = '100%';
     progressText.textContent = 'Quiz Complete! 🎉';
 
@@ -191,7 +209,6 @@ function showResults() {
         </div>
     `;
 
-    // Show review of questions
     html += `<div style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">`;
     html += `<h3 style="margin-bottom: 16px;">Review Your Answers</h3>`;
     currentQuestions.forEach(function(q, i) {
@@ -212,13 +229,12 @@ function showResults() {
     document.getElementById('backToSubjectsFromQuiz').addEventListener('click', goBackToSubjects);
 }
 
-// Go back to subjects view
 function goBackToSubjects() {
     quizView.classList.remove('active');
     subjectsView.classList.add('active');
 }
 
-// Initialize quiz
 function initQuiz() {
     backToSubjectsBtn.addEventListener('click', goBackToSubjects);
+    initSearch();
 }

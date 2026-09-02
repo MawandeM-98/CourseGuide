@@ -1,10 +1,8 @@
 /* ============================================================
    COURSEGUIDE - LEARNING APP
-   Glassmorphism + Powder Blue Themes
-   iOS 16.3+ Compatible (no oklch)
+   Coffee Brown Light Theme + Dark Glassmorphism
    ============================================================ */
 
-/* ----- RESET & BASE ----- */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +15,6 @@ body {
     transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ----- SCREENS ----- */
 .screen {
     display: none;
     min-height: 100vh;
@@ -177,14 +174,6 @@ body.theme-glass {
     color: #ffffff;
 }
 
-body.theme-glass .glass {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
 body.theme-glass .app-header {
     background: rgba(10, 10, 26, 0.85);
     backdrop-filter: blur(16px);
@@ -210,6 +199,10 @@ body.theme-glass .app-title {
 
 body.theme-glass .section-title {
     color: #ffffff;
+}
+
+body.theme-glass .section-subtitle {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 body.theme-glass .card-title {
@@ -319,161 +312,203 @@ body.theme-glass .header-book {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* ============================================================
-   THEME 2: POWDER BLUE + OFF-WHITE (Toggle)
-   ============================================================ */
-body.theme-blue {
-    background: #e8f0fe;
-    color: #1a2a4a;
-}
-
-body.theme-blue .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 20, 40, 0.1);
-}
-
-body.theme-blue .app-header {
-    background: rgba(232, 240, 254, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0, 20, 40, 0.06);
-}
-
-body.theme-blue .card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 20, 40, 0.06);
-}
-
-body.theme-blue .card:hover {
-    box-shadow: 0 8px 40px rgba(0, 20, 40, 0.12);
-}
-
-body.theme-blue .app-title {
-    color: #1a2a4a;
-}
-
-body.theme-blue .section-title {
-    color: #1a2a4a;
-}
-
-body.theme-blue .card-title {
-    color: #1a2a4a;
-}
-
-body.theme-blue .card-subject {
-    color: rgba(26, 42, 74, 0.5);
-}
-
-body.theme-blue .card-icon {
-    color: rgba(26, 42, 74, 0.2);
-}
-
-body.theme-blue .footer-mm {
-    color: #1a3a6a;
-    text-shadow: 0 0 20px rgba(26, 58, 106, 0.3);
-}
-
-body.theme-blue .quiz-title {
-    color: #1a2a4a;
-}
-
-body.theme-blue .question-text {
-    color: #1a2a4a;
-}
-
-body.theme-blue .option-btn {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(26, 42, 74, 0.08);
-    color: #1a2a4a;
-}
-
-body.theme-blue .option-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-body.theme-blue .option-btn.selected {
-    border-color: #4a8fe0;
-    background: rgba(74, 143, 224, 0.15);
-}
-
-body.theme-blue .option-btn.correct {
-    border-color: #2ecc71;
-    background: rgba(46, 204, 113, 0.15);
-}
-
-body.theme-blue .option-btn.wrong {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.15);
-}
-
-body.theme-blue .explanation-box {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(26, 42, 74, 0.06);
-    color: #1a2a4a;
-}
-
-body.theme-blue .next-btn {
-    background: #4a8fe0;
+body.theme-glass .search-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #ffffff;
 }
 
-body.theme-blue .next-btn:hover {
-    background: #3a7ac0;
+body.theme-glass .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
-body.theme-blue .back-btn {
-    color: rgba(26, 42, 74, 0.5);
-}
-
-body.theme-blue .back-btn:hover {
-    color: #1a2a4a;
-}
-
-body.theme-blue .theme-btn {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(26, 42, 74, 0.08);
-    color: #1a2a4a;
-}
-
-body.theme-blue .theme-btn:hover {
-    background: rgba(255, 255, 255, 0.8);
-}
-
-body.theme-blue .logout-btn {
-    color: rgba(26, 42, 74, 0.5);
-}
-
-body.theme-blue .logout-btn:hover {
-    color: #1a2a4a;
-}
-
-body.theme-blue .progress-fill {
-    background: linear-gradient(90deg, #4a8fe0, #7ab0f0);
-}
-
-body.theme-blue .quiz-score {
-    color: rgba(26, 42, 74, 0.6);
-}
-
-body.theme-blue .progress-text {
-    color: rgba(26, 42, 74, 0.4);
-}
-
-body.theme-blue .header-book {
-    color: rgba(26, 42, 74, 0.3);
+body.theme-glass .search-input:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
 
 /* ============================================================
-   COMMON STYLES (Both Themes)
+   THEME 2: COFFEE SHOP (Light - Brown/Cream)
+ /* ============================================================
+   THEME 2: COFFEE SHOP (Light - Brown/Cream) - FIXED
+   ============================================================ */
+body.theme-coffee {
+    background: #f5ede4;
+    color: #2c1a0e;
+}
+
+body.theme-coffee .app-header {
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(44, 26, 14, 0.08);
+}
+
+body.theme-coffee .app-title {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .header-book {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .theme-btn {
+    background: #fff8f0;
+    border: 1px solid rgba(44, 26, 14, 0.12);
+    color: #2c1a0e;
+}
+
+body.theme-coffee .theme-btn:hover {
+    background: #f0e6d8;
+}
+
+body.theme-coffee .logout-btn {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .logout-btn:hover {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .section-title {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .section-subtitle {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .card {
+    background: #ffffff;
+    border: 1px solid rgba(44, 26, 14, 0.06);
+    box-shadow: 0 4px 20px rgba(44, 26, 14, 0.06);
+}
+
+body.theme-coffee .card:hover {
+    box-shadow: 0 8px 40px rgba(44, 26, 14, 0.12);
+    transform: scale(1.03);
+}
+
+body.theme-coffee .card-title {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .card-subject {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .card-icon {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .search-input {
+    background: #ffffff;
+    border: 1px solid rgba(44, 26, 14, 0.12);
+    color: #2c1a0e;
+}
+
+body.theme-coffee .search-input::placeholder {
+    color: #8a7a6a;
+}
+
+body.theme-coffee .search-input:focus {
+    border-color: #8b6b4b;
+    box-shadow: 0 0 0 3px rgba(139, 107, 75, 0.15);
+}
+
+body.theme-coffee .quiz-title {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .question-text {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .option-btn {
+    background: #ffffff;
+    border: 1px solid rgba(44, 26, 14, 0.1);
+    color: #2c1a0e;
+}
+
+body.theme-coffee .option-btn:hover:not(:disabled) {
+    background: #f5ede4;
+}
+
+body.theme-coffee .option-btn.selected {
+    border-color: #8b6b4b;
+    background: rgba(139, 107, 75, 0.1);
+}
+
+body.theme-coffee .option-btn.correct {
+    border-color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+}
+
+body.theme-coffee .option-btn.wrong {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+body.theme-coffee .option-btn .option-letter {
+    color: #8b6b4b;
+}
+
+body.theme-coffee .explanation-box {
+    background: #ffffff;
+    border: 1px solid rgba(44, 26, 14, 0.06);
+    color: #2c1a0e;
+}
+
+body.theme-coffee .next-btn {
+    background: #8b6b4b;
+    color: #ffffff;
+}
+
+body.theme-coffee .next-btn:hover {
+    background: #7a5e42;
+}
+
+body.theme-coffee .back-btn {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .back-btn:hover {
+    color: #2c1a0e;
+}
+
+body.theme-coffee .progress-bar {
+    background: rgba(44, 26, 14, 0.1);
+}
+
+body.theme-coffee .progress-fill {
+    background: linear-gradient(90deg, #8b6b4b, #b8956e);
+}
+
+body.theme-coffee .quiz-score {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .progress-text {
+    color: #5a3d2b;
+}
+
+body.theme-coffee .footer-mm {
+    color: #8b6b4b;
+    text-shadow: 0 0 20px rgba(139, 107, 75, 0.2);
+}
+
+body.theme-coffee .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   COMMON STYLES
    ============================================================ */
 
-/* ----- APP HEADER ----- */
 .app-header {
     position: sticky;
     top: 0;
@@ -483,6 +518,8 @@ body.theme-blue .header-book {
     align-items: center;
     padding: 16px 24px;
     transition: background 0.4s ease, border 0.4s ease;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .header-left {
@@ -495,6 +532,7 @@ body.theme-blue .header-book {
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .app-title {
@@ -532,6 +570,24 @@ body.theme-blue .header-book {
     font-family: 'Inter', sans-serif;
 }
 
+/* ----- SEARCH BAR ----- */
+.search-container {
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
 /* ----- MAIN CONTENT ----- */
 #mainContent {
     flex: 1;
@@ -558,47 +614,75 @@ body.theme-blue .header-book {
 .section-title {
     font-size: 28px;
     font-weight: 700;
-    margin-bottom: 28px;
+    margin-bottom: 4px;
     letter-spacing: -0.5px;
+    transition: color 0.4s ease;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    opacity: 0.6;
+    margin-bottom: 28px;
     transition: color 0.4s ease;
 }
 
 /* ----- CARDS GRID ----- */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 900px;
+    }
+}
+
+/* ----- CARD ----- */
 .card {
-    padding: 28px 20px;
-    border-radius: 20px;
+    padding: 36px 28px;
+    border-radius: 24px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-}
-
-.card:hover {
-    transform: scale(1.04);
+    position: relative;
+    animation: heartbeat 3s ease-in-out infinite;
 }
 
 .card-icon {
-    font-size: 40px;
+    font-size: 52px;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     transition: color 0.4s ease;
 }
 
 .card-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
     transition: color 0.4s ease;
 }
 
 .card-subject {
-    font-size: 13px;
+    font-size: 15px;
     transition: color 0.4s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    5% { transform: scale(1.02); }
+    10% { transform: scale(1); }
+    15% { transform: scale(1.02); }
+    20% { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 
 /* ----- QUIZ VIEW ----- */
@@ -739,7 +823,7 @@ body.theme-blue .header-book {
     transform: scale(1.02);
 }
 
-/* ----- FOOTER ----- */
+/* ----- FOOTER - MM (No Space) ----- */
 .app-footer {
     text-align: center;
     padding: 20px 24px;
@@ -755,7 +839,7 @@ body.theme-blue .header-book {
 .footer-mm {
     font-size: 18px;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 0px;
     pointer-events: auto;
     transition: color 0.4s ease, text-shadow 0.4s ease;
 }
@@ -764,46 +848,9 @@ body.theme-blue .header-book {
    RESPONSIVE
    ============================================================ */
 
-@media (max-width: 900px) {
-    .cards-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 16px;
-    }
-
-    .card {
-        padding: 22px 16px;
-    }
-
-    .card-icon {
-        font-size: 32px;
-    }
-
-    .card-title {
-        font-size: 16px;
-    }
-
-    .app-title {
-        font-size: 20px;
-    }
-
-    .section-title {
-        font-size: 24px;
-    }
-
-    .question-text {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .app-header {
         padding: 12px 16px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .header-right {
-        gap: 10px;
     }
 
     .app-title {
@@ -829,31 +876,33 @@ body.theme-blue .header-book {
     }
 
     .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 16px;
     }
 
     .card {
-        padding: 18px 12px;
-        border-radius: 16px;
+        padding: 24px 18px;
+        border-radius: 20px;
     }
 
     .card-icon {
-        font-size: 28px;
-        margin-bottom: 8px;
+        font-size: 40px;
+        margin-bottom: 12px;
     }
 
     .card-title {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .card-subject {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .section-title {
-        font-size: 20px;
-        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .section-subtitle {
+        font-size: 14px;
     }
 
     .login-box {
@@ -903,27 +952,35 @@ body.theme-blue .header-book {
     .login-icon {
         font-size: 36px;
     }
+
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
 }
 
 @media (max-width: 400px) {
-    .cards-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
     .card {
-        padding: 14px 10px;
+        padding: 18px 14px;
     }
 
     .card-icon {
-        font-size: 22px;
+        font-size: 32px;
     }
 
     .card-title {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .app-title {
         font-size: 16px;
+    }
+
+    .cards-grid {
+        gap: 12px;
     }
 }
