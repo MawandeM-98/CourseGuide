@@ -20,6 +20,22 @@ const quizScore = document.getElementById('quizScore');
 const backToSubjectsBtn = document.getElementById('backToSubjects');
 const searchInput = document.getElementById('searchInput');
 
+// ----- UTILITY: Shuffle array -----
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+// ----- Get questions for a subject from the global registry -----
+function getQuestionsForSubject(subjectId) {
+    const allQuestions = window.SUBJECT_QUESTIONS[subjectId] || [];
+    return shuffleArray(allQuestions);
+}
+
 // Get the number of questions from the dropdown
 function getQuestionCount() {
     const select = document.getElementById('questionCount');
@@ -83,7 +99,9 @@ function startQuiz(subjectId) {
 
     currentSubject = subject;
     var count = getQuestionCount();
-    currentQuestions = getRandomQuestions(subjectId, count);
+    var allQuestions = getQuestionsForSubject(subjectId);
+    var shuffled = shuffleArray(allQuestions);
+    currentQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
 
     if (currentQuestions.length === 0) {
         alert('No questions available for this subject yet.');

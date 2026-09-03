@@ -2,6 +2,20 @@
 // COURSEGUIDE - MAIN APP
 // ============================================================
 
+// ----- SUBJECT CONFIGURATION (MUST BE FIRST) -----
+const SUBJECTS = [
+    { id: 'mathematics', name: 'Mathematics', icon: '📐', color: '#6c63ff' },
+    { id: 'geography', name: 'Geography', icon: '🌍', color: '#2ecc71' },
+    { id: 'life-sciences', name: 'Life Sciences', icon: '🧬', color: '#e74c3c' },
+    { id: 'physics', name: 'Physics', icon: '⚡', color: '#f39c12' },
+    { id: 'accounting', name: 'Accounting', icon: '💰', color: '#3498db' },
+    { id: 'business-studies', name: 'Business Studies', icon: '📊', color: '#9b59b6' }
+];
+
+// Global registry for questions (populated by each subject file)
+window.SUBJECT_QUESTIONS = window.SUBJECT_QUESTIONS || {};
+
+// ----- THEME CONTROLS -----
 var themeToggle = document.getElementById('themeToggle');
 var body = document.body;
 var currentTheme = 'glass'; // 'glass' or 'coffee'
@@ -33,10 +47,11 @@ function loadTheme() {
     }
 }
 
+// ----- INIT -----
 function init() {
     loadTheme();
     initAuth();
-    renderCards();
+    renderCards();      // Now SUBJECTS is defined
     initQuiz();
     themeToggle.addEventListener('click', toggleTheme);
     console.log('📚 CourseGuide loaded successfully!');

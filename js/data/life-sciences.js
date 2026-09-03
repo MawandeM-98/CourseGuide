@@ -1,23 +1,20 @@
 // ============================================================
-// COURSEGUIDE - DATA
+// LIFE SCIENCES — 200 Questions
+// ============================================================
+// ============================================================
+// LIFE SCIENCES — 200 Questions
 // ============================================================
 
-// Subject configuration
-const SUBJECTS = [
-    { id: 'mathematics', name: 'Mathematics', icon: '📐', color: '#6c63ff' },
-    { id: 'geography', name: 'Geography', icon: '🌍', color: '#2ecc71' },
-    { id: 'life-sciences', name: 'Life Sciences', icon: '🧬', color: '#e74c3c' },
-    { id: 'physics', name: 'Physics', icon: '⚡', color: '#f39c12' },
-    { id: 'accounting', name: 'Accounting', icon: '💰', color: '#3498db' },
-    { id: 'business-studies', name: 'Business Studies', icon: '📊', color: '#9b59b6' }
-];
+// ✅ Ensure the global registry exists
+if (typeof window.SUBJECT_QUESTIONS === 'undefined') {
+    window.SUBJECT_QUESTIONS = {};
+}
 
-// ----- LIFE SCIENCES QUESTIONS (FULL 200) -----
-// Combined from both mock exams you provided
 
-// FIRST MOCK EXAM (100 Questions) - Basic NSC Style
-const LIFE_SCIENCES_BASIC = [
-    // SECTION A — Reproduction, Meiosis and Human Reproduction (1–20)
+const LIFE_SCIENCES_QUESTIONS = [
+    // ============================================================
+    // SECTION A — Reproduction, Meiosis and Human Reproduction (1-20)
+    // ============================================================
     {
         question: "During meiosis, homologous chromosomes separate and move towards opposite poles of the cell. Which phase of meiosis is being described?",
         options: ["Prophase I", "Anaphase I", "Metaphase II", "Anaphase II"],
@@ -168,7 +165,10 @@ const LIFE_SCIENCES_BASIC = [
         correct: 0,
         explanation: "The embryo implants into the thickened lining of the uterus, called the endometrium."
     },
-    // SECTION B — Nervous System, Homeostasis, Hormones (21–40)
+
+    // ============================================================
+    // SECTION B — Nervous System, Homeostasis, Hormones (21-40)
+    // ============================================================
     {
         question: "The part of the neuron that normally receives impulses from another neuron is the:",
         options: ["axon", "dendrite", "myelin sheath", "synaptic knob"],
@@ -334,7 +334,10 @@ const LIFE_SCIENCES_BASIC = [
         correct: 0,
         explanation: "Myelin insulates axons and allows impulses to travel rapidly. Damage to the myelin sheath can therefore interfere with nerve transmission."
     },
-    // SECTION C — Plant Responses and Hormones (41–60)
+
+    // ============================================================
+    // SECTION C — Plant Responses and Hormones (41-60)
+    // ============================================================
     {
         question: "A plant shoot bends towards a source of light. This response is called:",
         options: ["geotropism", "phototropism", "hydrotropism", "thigmotropism"],
@@ -490,7 +493,10 @@ const LIFE_SCIENCES_BASIC = [
         correct: 0,
         explanation: "Plants and animals both use chemical signalling systems. Their mechanisms differ, but chemical messengers coordinate physiological responses in both."
     },
-    // SECTION D — DNA, RNA, Protein Synthesis and Genetics (61–80)
+
+    // ============================================================
+    // SECTION D — DNA, RNA, Protein Synthesis and Genetics (61-80)
+    // ============================================================
     {
         question: "DNA is composed of repeating units called:",
         options: ["amino acids", "nucleotides", "fatty acids", "monosaccharides"],
@@ -631,7 +637,10 @@ const LIFE_SCIENCES_BASIC = [
         correct: 1,
         explanation: "Sex-linked genes are located on sex chromosomes, particularly the X chromosome. Males have XY and females normally have XX."
     },
-    // SECTION E — Evolution, Genetics Application and Integrated Questions (81–100)
+
+    // ============================================================
+    // SECTION E — Evolution, Genetics and Integrated (81-100)
+    // ============================================================
     {
         question: "Natural selection occurs because:",
         options: [
@@ -786,12 +795,11 @@ const LIFE_SCIENCES_BASIC = [
         ],
         correct: 1,
         explanation: "A single experiment is insufficient to establish reliable results. Repetition allows the researcher to determine whether the observed pattern is consistent."
-    }
-];
+    },
 
-// ----- SECOND MOCK EXAM (ADVANCED) — 100 Questions -----
-// Cell with 2n = 8 (Q1)
-const LIFE_SCIENCES_ADVANCED = [
+    // ============================================================
+    // SECOND MOCK EXAM (ADVANCED — 100 Questions)
+    // ============================================================
     {
         question: "A cell with a diploid chromosome number of 2n = 8 undergoes meiosis. At the end of meiosis II, how many chromosomes and chromatids will normally occur in each daughter cell?",
         options: ["8 chromosomes and 8 chromatids", "4 chromosomes and 8 chromatids", "4 chromosomes and 4 chromatids", "2 chromosomes and 4 chromatids"],
@@ -962,7 +970,6 @@ const LIFE_SCIENCES_ADVANCED = [
         correct: 1,
         explanation: "IVF means in vitro fertilisation. 'In vitro' means fertilisation takes place outside the body under controlled laboratory conditions. The resulting embryo is later transferred into the uterus."
     },
-    // Questions 21-40: Nervous System, Homeostasis, Hormones
     {
         question: "The graph shows blood glucose concentration after a carbohydrate-rich meal. Blood glucose rises and then falls. Which hormone would be expected to increase shortly after the blood glucose concentration rises?",
         options: ["Glucagon", "Insulin", "ADH", "Thyroxine"],
@@ -1163,7 +1170,6 @@ const LIFE_SCIENCES_ADVANCED = [
         correct: 1,
         explanation: "Cones provide: colour vision; sharp detailed vision; best function in brighter light. Rods are more important in dim light."
     },
-    // Questions 41-60: Experimental Design, Data and Plant Responses
     {
         question: "A learner investigates the effect of light direction on shoot growth. Twenty identical seedlings are divided into two groups. Group 1 receives light from directly above. Group 2 receives light from the left. Water, temperature, species and age are kept constant. Shoot curvature is measured after 48 hours. What is the independent variable?",
         options: ["Shoot curvature", "Direction of light", "Amount of water", "Number of seedlings"],
@@ -1374,7 +1380,6 @@ const LIFE_SCIENCES_ADVANCED = [
         correct: 0,
         explanation: "Reliability: Can similar results be obtained repeatedly? Validity: Does the design genuinely test the intended relationship without uncontrolled variables confusing the outcome? They are related but not identical."
     },
-    // Questions 61-80: DNA, Protein Synthesis and Genetics
     {
         question: "A section of DNA has the following template strand: TAC GGA CTT AAA. What is the complementary mRNA sequence?",
         options: ["AUG CCU GAA UUU", "TAC GGA CTT AAA", "ATG CCT GAA TTT", "UAC GGA CUU AAA"],
@@ -1530,7 +1535,6 @@ const LIFE_SCIENCES_ADVANCED = [
         correct: 0,
         explanation: "During Prophase I, non-sister chromatids of homologous chromosomes may exchange DNA. A crossover occurring between two linked genes can separate their allele combination."
     },
-    // Questions 81-100: Pedigree Analysis, Evolution and Population Change
     {
         question: "A rare condition is controlled by an autosomal recessive allele a. Generation I: I-1 unaffected male and I-2 affected female. They have two children: II-1 unaffected male and II-2 unaffected female. What is the genotype of individual I-2?",
         options: ["AA", "Aa", "aa", "Either AA or Aa"],
@@ -1693,108 +1697,10 @@ const LIFE_SCIENCES_ADVANCED = [
     }
 ];
 
-// ----- COMBINED LIFE SCIENCES (200 QUESTIONS) -----
-const LIFE_SCIENCES_ALL = LIFE_SCIENCES_BASIC.concat(LIFE_SCIENCES_ADVANCED);
 
-// ----- OTHER SUBJECTS (Placeholder Questions) -----
-const OTHER_SUBJECTS = {
-    mathematics: [
-        {
-            question: "What is the value of (2 + 3) × 4?",
-            options: ["12", "16", "20", "24"],
-            correct: 2,
-            explanation: "First solve the brackets: 2 + 3 = 5, then multiply by 4: 5 × 4 = 20."
-        },
-        {
-            question: "What is the square root of 144?",
-            options: ["10", "11", "12", "13"],
-            correct: 2,
-            explanation: "12 × 12 = 144, so the square root of 144 is 12."
-        }
-    ],
-    geography: [
-        {
-            question: "What is the capital of South Africa?",
-            options: ["Cape Town", "Pretoria", "Johannesburg", "Durban"],
-            correct: 1,
-            explanation: "Pretoria is the administrative capital of South Africa."
-        },
-        {
-            question: "Which ocean borders South Africa to the east?",
-            options: ["Atlantic Ocean", "Pacific Ocean", "Indian Ocean", "Southern Ocean"],
-            correct: 2,
-            explanation: "The Indian Ocean borders South Africa to the east."
-        }
-    ],
-    physics: [
-        {
-            question: "What is the SI unit of force?",
-            options: ["Joule", "Newton", "Watt", "Pascal"],
-            correct: 1,
-            explanation: "The SI unit of force is the Newton (N)."
-        },
-        {
-            question: "What is the speed of light approximately?",
-            options: ["300,000 km/s", "150,000 km/s", "600,000 km/s", "30,000 km/s"],
-            correct: 0,
-            explanation: "The speed of light is approximately 300,000 km/s."
-        }
-    ],
-    accounting: [
-        {
-            question: "What is the accounting equation?",
-            options: ["Assets = Liabilities + Expenses", "Assets = Liabilities + Owner's Equity", "Assets = Revenue - Expenses", "Liabilities = Assets + Owner's Equity"],
-            correct: 1,
-            explanation: "The accounting equation is: Assets = Liabilities + Owner's Equity."
-        },
-        {
-            question: "What is a debit?",
-            options: ["Money going out of an account", "Money coming into an account", "A type of credit", "A financial statement"],
-            correct: 0,
-            explanation: "A debit is an entry that increases assets or decreases liabilities."
-        }
-    ],
-    'business-studies': [
-        {
-            question: "What is a sole proprietorship?",
-            options: ["A business owned by one person", "A business owned by two or more people", "A business with shareholders", "A government-owned business"],
-            correct: 0,
-            explanation: "A sole proprietorship is a business owned and operated by one person."
-        },
-        {
-            question: "What is a SWOT analysis used for?",
-            options: ["Financial planning", "Strategic analysis", "Marketing research", "Accounting"],
-            correct: 1,
-            explanation: "SWOT analysis is used for strategic planning: Strengths, Weaknesses, Opportunities, Threats."
-        }
-    ]
-};
+// ✅ Register this subject's questions
+window.SUBJECT_QUESTIONS['life-sciences'] = LIFE_SCIENCES_QUESTIONS;
 
-// ----- COMBINED QUESTIONS LOOKUP -----
-const QUESTIONS = {
-    'life-sciences': LIFE_SCIENCES_ALL,  // 200 questions
-    'mathematics': OTHER_SUBJECTS.mathematics,
-    'geography': OTHER_SUBJECTS.geography,
-    'physics': OTHER_SUBJECTS.physics,
-    'accounting': OTHER_SUBJECTS.accounting,
-    'business-studies': OTHER_SUBJECTS['business-studies']
-};
+// ✅ Log confirmation
+console.log('✅ Life Sciences loaded:', window.SUBJECT_QUESTIONS['life-sciences'].length, 'questions');
 
-const QUESTIONS_PER_QUIZ = 10;
-
-function shuffleArray(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-function getRandomQuestions(subjectId, count) {
-    count = count || QUESTIONS_PER_QUIZ;
-    const allQuestions = QUESTIONS[subjectId] || [];
-    if (allQuestions.length === 0) return [];
-    const shuffled = shuffleArray(allQuestions);
-    return shuffled.slice(0, Math.min(count, shuffled.length));
-}
