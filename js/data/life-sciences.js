@@ -1698,9 +1698,7 @@ const LIFE_SCIENCES_QUESTIONS = [
 ];
 
 
-// ✅ Register this subject's questions
+// Register this subject's questions (safe merge — never overwrites the whole registry)
+window.SUBJECT_QUESTIONS = window.SUBJECT_QUESTIONS || {};
 window.SUBJECT_QUESTIONS['life-sciences'] = LIFE_SCIENCES_QUESTIONS;
-
-// ✅ Log confirmation
 console.log('✅ Life Sciences loaded:', window.SUBJECT_QUESTIONS['life-sciences'].length, 'questions');
-

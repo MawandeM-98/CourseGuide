@@ -1250,5 +1250,6 @@ const GEOGRAPHY_QUESTIONS = [
 ];
 
 // Register this subject's questions
-const SUBJECT_QUESTIONS = window.SUBJECT_QUESTIONS || {};
-SUBJECT_QUESTIONS['geography'] = GEOGRAPHY_QUESTIONS;
+window.SUBJECT_QUESTIONS = window.SUBJECT_QUESTIONS || {};
+window.SUBJECT_QUESTIONS['geography'] = GEOGRAPHY_QUESTIONS;
+console.log('✅ Geography loaded:', window.SUBJECT_QUESTIONS['geography'].length, 'questions');
