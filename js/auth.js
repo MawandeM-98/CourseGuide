@@ -1,80 +1,100 @@
 // ============================================================
 // COURSEGUIDE - AUTHENTICATION
-// Login logic - FIXED (Plain Script)
 // ============================================================
 
 const VALID_USERNAME = 'learner';
 const VALID_PASSWORD = 'learner123';
 
-// DOM elements
-const loginScreen = document.getElementById('loginScreen');
-const appScreen = document.getElementById('appScreen');
-const loginForm = document.getElementById('loginForm');
-const loginError = document.getElementById('loginError');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
-const rememberMeCheckbox = document.getElementById('rememberMe');
-const logoutBtn = document.getElementById('logoutBtn');
+var loginScreen = document.getElementById('loginScreen');
+var infoScreen = document.getElementById('infoScreen');
+var appScreen = document.getElementById('appScreen');
+var loginForm = document.getElementById('loginForm');
+var loginError = document.getElementById('loginError');
+var usernameInput = document.getElementById('username');
+var passwordInput = document.getElementById('password');
+var rememberMeCheckbox = document.getElementById('rememberMe');
+var logoutBtn = document.getElementById('logoutBtn');
+var nextBtn = document.getElementById('nextBtn');
 
-// Check if user was previously logged in
+// ============================================================
+// SESSION MANAGEMENT
+// ============================================================
 function checkSession() {
-    const session = sessionStorage.getItem('courseguide_session');
+    var session = sessionStorage.getItem('courseguide_session');
     if (session === 'authenticated') {
-        showApp();
+        showInfo();
         return true;
     }
     return false;
 }
 
-// Show the main app
+// ============================================================
+// SCREEN NAVIGATION
+// ============================================================
+function showInfo() {
+    loginScreen.classList.remove('active');
+    infoScreen.classList.add('active');
+    appScreen.classList.remove('active');
+}
+
 function showApp() {
     loginScreen.classList.remove('active');
+    infoScreen.classList.remove('active');
     appScreen.classList.add('active');
 }
 
-// Handle login
+// ============================================================
+// LOGIN HANDLER
+// ============================================================
 function handleLogin() {
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value.trim();
+    var username = usernameInput.value.trim();
+    var password = passwordInput.value.trim();
 
-    // Clear previous error
     loginError.classList.add('hidden');
 
     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        // Success
+        // Remember me
         if (rememberMeCheckbox.checked) {
             localStorage.setItem('courseguide_username', username);
         } else {
             localStorage.removeItem('courseguide_username');
         }
 
+        // Set session
         sessionStorage.setItem('courseguide_session', 'authenticated');
-        showApp();
+
+        // Go to info screen
+        showInfo();
     } else {
-        // Fail - show error
         loginError.classList.remove('hidden');
         passwordInput.value = '';
         passwordInput.focus();
     }
 }
 
+// ============================================================
+// LOGOUT HANDLER
+// ============================================================
 function logout() {
     sessionStorage.removeItem('courseguide_session');
     appScreen.classList.remove('active');
+    infoScreen.classList.remove('active');
     loginScreen.classList.add('active');
     passwordInput.value = '';
     loginError.classList.add('hidden');
 }
 
-// Initialize auth
+// ============================================================
+// INITIALIZATION
+// ============================================================
 function initAuth() {
-    // Check session on load
+    // Check if session exists
     if (checkSession()) {
         return;
     }
 
-    // Check for remembered username
-    const remembered = localStorage.getItem('courseguide_username');
+    // Pre-fill remembered username
+    var remembered = localStorage.getItem('courseguide_username');
     if (remembered) {
         usernameInput.value = remembered;
         rememberMeCheckbox.checked = true;
@@ -98,4 +118,11 @@ function initAuth() {
     logoutBtn.addEventListener('click', function() {
         logout();
     });
+
+    // Next button (info screen → app screen)
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            showApp();
+        });
+    }
 }
