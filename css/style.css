@@ -326,117 +326,81 @@ body.theme-glass .search-input:focus {
     border-color: #6c63ff;
     box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
-
 /* ============================================================
-   THEME 2: COFFEE SHOP (Light - Brown/Cream)
- /* ============================================================
-   THEME 2: COFFEE SHOP (Light - Brown/Cream) - FIXED
+   THEME 2: LIGHT BLUE (Replaces Coffee)
    ============================================================ */
 body.theme-coffee {
-    background: #f5ede4;
-    color: #2c1a0e;
+    background: #eaf4fc;
+    color: #1a3a5c;
 }
 
 body.theme-coffee .app-header {
-    background: rgba(255, 248, 240, 0.95);
+    background: rgba(234, 244, 252, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(44, 26, 14, 0.08);
-}
-
-body.theme-coffee .app-title {
-    color: #2c1a0e;
-}
-
-body.theme-coffee .header-book {
-    color: #5a3d2b;
-}
-
-body.theme-coffee .theme-btn {
-    background: #fff8f0;
-    border: 1px solid rgba(44, 26, 14, 0.12);
-    color: #2c1a0e;
-}
-
-body.theme-coffee .theme-btn:hover {
-    background: #f0e6d8;
-}
-
-body.theme-coffee .logout-btn {
-    color: #5a3d2b;
-}
-
-body.theme-coffee .logout-btn:hover {
-    color: #2c1a0e;
-}
-
-body.theme-coffee .section-title {
-    color: #2c1a0e;
-}
-
-body.theme-coffee .section-subtitle {
-    color: #5a3d2b;
+    border-bottom: 1px solid rgba(26, 58, 92, 0.08);
 }
 
 body.theme-coffee .card {
     background: #ffffff;
-    border: 1px solid rgba(44, 26, 14, 0.06);
-    box-shadow: 0 4px 20px rgba(44, 26, 14, 0.06);
+    border: 1px solid rgba(26, 58, 92, 0.06);
+    box-shadow: 0 4px 20px rgba(26, 58, 92, 0.06);
 }
 
 body.theme-coffee .card:hover {
-    box-shadow: 0 8px 40px rgba(44, 26, 14, 0.12);
-    transform: scale(1.03);
+    box-shadow: 0 8px 40px rgba(26, 58, 92, 0.12);
+}
+
+body.theme-coffee .footer-mm {
+    color: #4a90c2;
+    text-shadow: 0 0 20px rgba(74, 144, 194, 0.25);
+}
+
+body.theme-coffee .app-title {
+    color: #1a3a5c;
+}
+
+body.theme-coffee .section-title {
+    color: #1a3a5c;
+}
+
+body.theme-coffee .section-subtitle {
+    color: #4a6a8c;
 }
 
 body.theme-coffee .card-title {
-    color: #2c1a0e;
+    color: #1a3a5c;
 }
 
 body.theme-coffee .card-subject {
-    color: #5a3d2b;
+    color: #4a6a8c;
 }
 
 body.theme-coffee .card-icon {
-    color: #5a3d2b;
-}
-
-body.theme-coffee .search-input {
-    background: #ffffff;
-    border: 1px solid rgba(44, 26, 14, 0.12);
-    color: #2c1a0e;
-}
-
-body.theme-coffee .search-input::placeholder {
-    color: #8a7a6a;
-}
-
-body.theme-coffee .search-input:focus {
-    border-color: #8b6b4b;
-    box-shadow: 0 0 0 3px rgba(139, 107, 75, 0.15);
+    color: #4a90c2;
 }
 
 body.theme-coffee .quiz-title {
-    color: #2c1a0e;
+    color: #1a3a5c;
 }
 
 body.theme-coffee .question-text {
-    color: #2c1a0e;
+    color: #1a3a5c;
 }
 
 body.theme-coffee .option-btn {
     background: #ffffff;
-    border: 1px solid rgba(44, 26, 14, 0.1);
-    color: #2c1a0e;
+    border: 1px solid rgba(26, 58, 92, 0.1);
+    color: #1a3a5c;
 }
 
 body.theme-coffee .option-btn:hover:not(:disabled) {
-    background: #f5ede4;
+    background: #dceefb;
 }
 
 body.theme-coffee .option-btn.selected {
-    border-color: #8b6b4b;
-    background: rgba(139, 107, 75, 0.1);
+    border-color: #4a90c2;
+    background: rgba(74, 144, 194, 0.12);
 }
 
 body.theme-coffee .option-btn.correct {
@@ -449,63 +413,96 @@ body.theme-coffee .option-btn.wrong {
     background: rgba(231, 76, 60, 0.1);
 }
 
-body.theme-coffee .option-btn .option-letter {
-    color: #8b6b4b;
-}
-
 body.theme-coffee .explanation-box {
     background: #ffffff;
-    border: 1px solid rgba(44, 26, 14, 0.06);
-    color: #2c1a0e;
+    border: 1px solid rgba(26, 58, 92, 0.06);
+    color: #1a3a5c;
 }
 
 body.theme-coffee .next-btn {
-    background: #8b6b4b;
+    background: #4a90c2;
     color: #ffffff;
 }
 
 body.theme-coffee .next-btn:hover {
-    background: #7a5e42;
+    background: #3a7aaa;
 }
 
 body.theme-coffee .back-btn {
-    color: #5a3d2b;
+    color: #4a6a8c;
 }
 
 body.theme-coffee .back-btn:hover {
-    color: #2c1a0e;
+    color: #1a3a5c;
 }
 
-body.theme-coffee .progress-bar {
-    background: rgba(44, 26, 14, 0.1);
+body.theme-coffee .theme-btn {
+    background: #ffffff;
+    border: 1px solid rgba(26, 58, 92, 0.08);
+    color: #1a3a5c;
+}
+
+body.theme-coffee .theme-btn:hover {
+    background: #dceefb;
+}
+
+body.theme-coffee .logout-btn {
+    color: #4a6a8c;
+}
+
+body.theme-coffee .logout-btn:hover {
+    color: #1a3a5c;
 }
 
 body.theme-coffee .progress-fill {
-    background: linear-gradient(90deg, #8b6b4b, #b8956e);
+    background: linear-gradient(90deg, #4a90c2, #7ab8e0);
+}
+
+body.theme-coffee .progress-bar {
+    background: rgba(26, 58, 92, 0.08);
 }
 
 body.theme-coffee .quiz-score {
-    color: #5a3d2b;
+    color: #4a6a8c;
 }
 
 body.theme-coffee .progress-text {
-    color: #5a3d2b;
+    color: #4a6a8c;
 }
 
-body.theme-coffee .footer-mm {
-    color: #8b6b4b;
-    text-shadow: 0 0 20px rgba(139, 107, 75, 0.2);
+body.theme-coffee .header-book {
+    color: #4a90c2;
 }
 
-body.theme-coffee .glass {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+body.theme-coffee .search-input {
+    background: #ffffff;
+    border: 1px solid rgba(26, 58, 92, 0.12);
+    color: #1a3a5c;
 }
 
+body.theme-coffee .search-input::placeholder {
+    color: #8aa8c2;
+}
 
+body.theme-coffee .search-input:focus {
+    border-color: #4a90c2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 194, 0.15);
+}
+
+body.theme-coffee .count-selector label {
+    color: #1a3a5c;
+}
+
+body.theme-coffee .count-selector select {
+    background: #ffffff;
+    border: 1px solid rgba(26, 58, 92, 0.12);
+    color: #1a3a5c;
+}
+
+body.theme-coffee .count-selector select:focus {
+    border-color: #4a90c2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 194, 0.15);
+}
 
 .count-selector {
     display: flex;
